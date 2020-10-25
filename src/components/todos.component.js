@@ -11,6 +11,9 @@ const Todo = props => (
         <td>
             <Link to={"/edit/"+props.todo._id}>Editar Tarea</Link>
         </td>
+        <td>
+            <Link to={"/delete/"+props.todo._id}>Eliminar Tarea</Link>
+        </td>
     </tr>
 )
 
@@ -45,7 +48,7 @@ export default class TodosList extends Component {
                 <thead>
                     <tr>
                         <th>Descripción</th>
-                        <th>Acción</th>
+                        <th colSpan="2">Acción</th>
                     </tr>
                 </thead>
                 <tbody>
