@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
+const apiUrl = 'http://localhost:5000/todos/add';
+
 
 export default class CreateTodo extends Component {
-
+    
+  
     constructor(props) {
         super(props);
 
@@ -23,8 +28,17 @@ export default class CreateTodo extends Component {
     onSubmit(e) {
         e.preventDefault();
         
-        console.log(`Description: ${this.state.todo_description}`);
+        console.log(`Descripcion: ${this.state.todo_description}`);
         
+
+        const nuevaTarea = {
+            todo_description: this.state.todo_description,
+            todo_completed: this.state.todo_completed
+        };
+
+        axios.post(apiUrl, nuevaTarea)
+        .then(res => console.log(res.data));
+
         this.setState({
             todo_description: '',
             todo_completed: false
